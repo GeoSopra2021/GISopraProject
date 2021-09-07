@@ -13,7 +13,7 @@ public abstract class Durchschnitt implements AnalystIn {
 		return ergebnis;
 	}
 	
-	public class DistanzDurchschnitt extends Durchschnitt {
+	public static class DistanzDurchschnitt extends Durchschnitt {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -22,7 +22,7 @@ public abstract class Durchschnitt implements AnalystIn {
 
 	}
 	
-	public class ZeitDurchschnitt extends Durchschnitt {
+	public static class ZeitDurchschnitt extends Durchschnitt {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -31,7 +31,7 @@ public abstract class Durchschnitt implements AnalystIn {
 
 	}
 	
-	public class GeschwindigkeitDurchschnitt extends Durchschnitt {
+	public static class GeschwindigkeitDurchschnitt extends Durchschnitt {
 
 		@Override
 		/**
