@@ -13,12 +13,12 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 		return ergebnis;
 	}
 
-protected abstract double getValue(Datapoint dp);
+public abstract double getValue(Datapoint dp);
 	
 	public class DistanzDurchschnitt extends Durchschnitt {
 
 		@Override
-		protected double getValue(Datapoint dp) {
+		public double getValue(Datapoint dp) {
 			return dp.getDistance();
 		}
 
@@ -27,7 +27,7 @@ protected abstract double getValue(Datapoint dp);
 	public class ZeitDurchschnitt extends Durchschnitt {
 
 		@Override
-		protected double getValue(Datapoint dp) {
+		public double getValue(Datapoint dp) {
 			return dp.getTime();
 		}
 
@@ -36,17 +36,10 @@ protected abstract double getValue(Datapoint dp);
 	public class GeschwindigkeitDurchschnitt extends Durchschnitt {
 
 		@Override
-		/**
-		 * @return Durchschnittsgeschwindigkeit in km/h
-		 */
-		protected double getValue(Datapoint dp) {
+		public double getValue(Datapoint dp) {
 			return dp.getDistance() / dp.getTime();
-			}
-
 		}
+
 	}
-}
-
-
-
+	
 }
