@@ -1,19 +1,21 @@
 package org.geosopra;
 
-public abstract class Durchschnitt implements AnalystIn {
-
+public abstract class OutlierdetectionMax implements AnalystIn {
+	
 	@Override
 	public double analyse(Datapoint[] dp) {
 		double ergebnis = 0;
 		for(int i = 0; i < dp.length; i++) {
-			ergebnis += getValue(dp[i]);
+			if (getValue(dp[i]) > ergebnis) {
+				ergebnis = getValue(dp[i]);
+			}
 		}
-		
-		ergebnis /= dp.length;
 		return ergebnis;
 	}
+
+public abstract double getValue(Datapoint dp);
 	
-	public static class DistanzDurchschnitt extends Durchschnitt {
+	public class DistanzDurchschnitt extends Durchschnitt {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -22,7 +24,7 @@ public abstract class Durchschnitt implements AnalystIn {
 
 	}
 	
-	public static class ZeitDurchschnitt extends Durchschnitt {
+	public class ZeitDurchschnitt extends Durchschnitt {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -31,17 +33,13 @@ public abstract class Durchschnitt implements AnalystIn {
 
 	}
 	
-	public static class GeschwindigkeitDurchschnitt extends Durchschnitt {
+	public class GeschwindigkeitDurchschnitt extends Durchschnitt {
 
 		@Override
-		/**
-		 * @return Durchschnittsgeschwindigkeit in km/h
-		 */
 		public double getValue(Datapoint dp) {
 			return dp.getDistance() / dp.getTime();
 		}
 
 	}
-
-
+	
 }
