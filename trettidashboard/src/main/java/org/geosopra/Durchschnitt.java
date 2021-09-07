@@ -13,12 +13,10 @@ public abstract class Durchschnitt implements AnalystIn {
 		return ergebnis;
 	}
 	
-	protected abstract double getValue(Datapoint dp);
-	
 	public class DistanzDurchschnitt extends Durchschnitt {
 
 		@Override
-		protected double getValue(Datapoint dp) {
+		public double getValue(Datapoint dp) {
 			return dp.getDistance();
 		}
 
@@ -27,7 +25,7 @@ public abstract class Durchschnitt implements AnalystIn {
 	public class ZeitDurchschnitt extends Durchschnitt {
 
 		@Override
-		protected double getValue(Datapoint dp) {
+		public double getValue(Datapoint dp) {
 			return dp.getTime();
 		}
 
@@ -39,7 +37,7 @@ public abstract class Durchschnitt implements AnalystIn {
 		/**
 		 * @return Durchschnittsgeschwindigkeit in km/h
 		 */
-		protected double getValue(Datapoint dp) {
+		public double getValue(Datapoint dp) {
 			return dp.getDistance() / dp.getTime();
 		}
 
