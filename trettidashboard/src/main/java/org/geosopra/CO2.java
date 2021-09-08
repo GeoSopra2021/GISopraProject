@@ -8,7 +8,7 @@ public abstract class CO2 implements AnalystIn {
     public void analyse(Datapoint[] dp, Model model){
         Durchschnitt.DistanzDurchschnitt distanz = new Durchschnitt.DistanzDurchschnitt();
 
-         double ds = distanz.analyse(dp);
+         double ds = distanz.analyseIntern(dp);
          double car = 126 * ds;
          double scooter = 126 * ds;
          double bicycle = 5 * ds;

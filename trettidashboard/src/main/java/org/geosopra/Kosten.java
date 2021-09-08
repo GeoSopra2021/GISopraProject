@@ -8,7 +8,7 @@ public abstract class Kosten implements AnalystIn{
 	public void analyse(Datapoint[] dp, Model model) {
 		Durchschnitt.ZeitDurchschnitt ds = new Durchschnitt.ZeitDurchschnitt();
 		
-		double ergebnis = getPreis().getGb() + ds.analyse(dp) * 100 * getPreis().getPpm();
+		double ergebnis = getPreis().getGb() + ds.analyseIntern(dp) * 100 * getPreis().getPpm();
 		
 		model.addAttribute(getKey(), ergebnis);
 	}
