@@ -18,10 +18,12 @@ public class App {
     public static void main(String[] args) throws Exception {
 
     	SpringApplication.run(App.class, args);
-
+        
+        /*
         Datapoint[] dp_array = new Datapoint[279];
         int temp = 0;
         scan(dp_array, temp);
+
         System.out.println("test" + dp_array[5].getDistance());
 
         Durchschnitt entfernung = new Durchschnitt.DistanzDurchschnitt();
@@ -40,6 +42,7 @@ public class App {
 		
 		Kosten.Tier tier = new Kosten.Tier();
 		System.out.println("Kosten Tier: " + tier.analyseIntern(dp_array));
+       */
 
     }
 
