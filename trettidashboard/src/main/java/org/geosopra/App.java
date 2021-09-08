@@ -3,14 +3,17 @@ package org.geosopra;
 import java.io.*;
 import java.util.Scanner;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * Hello world!
  *
  */
-
+@SpringBootApplication
 public class App {
     public static void main(String[] args) throws Exception {
-
+    	SpringApplication.run(App.class, args);
         Datapoint[] dp = new Datapoint[6];
         dp[0] = new Datapoint();
         dp[0].setDistance(3);
