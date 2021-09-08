@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 public abstract class CO2 implements AnalystIn {
 
     @Override
-    public double analyse(Datapoint[] dp, Model model){
+    public void analyse(Datapoint[] dp, Model model){
         Durchschnitt.DistanzDurchschnitt distanz = new Durchschnitt.DistanzDurchschnitt();
 
          double ds = distanz.analyse(dp);

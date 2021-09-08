@@ -1,16 +1,19 @@
 package org.geosopra;
 
+import org.springframework.ui.Model;
+
 public abstract class Durchschnitt implements AnalystIn {
+	public abstract String getKey();
 
 	@Override
-	public double analyse(Datapoint[] dp) {
+	public void analyse(Datapoint[] dp, Model model) {
 		double ergebnis = 0;
 		for(int i = 0; i < dp.length; i++) {
 			ergebnis += getValue(dp[i]);
 		}
 		
 		ergebnis /= dp.length;
-		return ergebnis;
+		model.addAttribute(getKey(), ergebnis);
 	}
 	
 	public static class DistanzDurchschnitt extends Durchschnitt {
@@ -20,6 +23,10 @@ public abstract class Durchschnitt implements AnalystIn {
 			return dp.getDistance();
 		}
 
+		@Override
+		public String getKey() {
+			return "DistanzDurchschnitt";
+		}
 	}
 	
 	public static class ZeitDurchschnitt extends Durchschnitt {
@@ -27,6 +34,10 @@ public abstract class Durchschnitt implements AnalystIn {
 		@Override
 		public double getValue(Datapoint dp) {
 			return dp.getTime();
+		}
+		@Override
+		public String getKey() {
+			return "ZeitDurchschnitt";
 		}
 
 	}
@@ -39,6 +50,10 @@ public abstract class Durchschnitt implements AnalystIn {
 		 */
 		public double getValue(Datapoint dp) {
 			return dp.getDistance() / dp.getTime();
+		}
+		@Override
+		public String getKey() {
+			return "GeschwindigkeitDurchschnitt";
 		}
 
 	}

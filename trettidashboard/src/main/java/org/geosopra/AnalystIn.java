@@ -9,4 +9,5 @@ public interface AnalystIn {
 	
 	public abstract double getValue(Datapoint dp);
 
+
 }
