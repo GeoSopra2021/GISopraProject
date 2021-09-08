@@ -1,18 +1,20 @@
 # GISopraProject
 
+<img align="center" src="https://user-images.githubusercontent.com/90246149/132510061-0153dc74-775f-4c65-bd4d-8b73ce846946.png" alt="drawing" width="200"/>
+
 In diesem wunderbar super tollen Projekt, wird ein Dashboard erstellt, indem analysierte Daten zu den Tretti-Rollern auf einer website ausgegeben werden.
 (」°ロ°)」
 
 
-Autoren:
-Alexia Pagotto
-Anne Staskiewicz
-Stefan Blume
-Eva Langstein
-Jonas Raabe
+## Autoren:
+- Alexia Pagotto
+- Anne Staskiewicz
+- Stefan Blume
+- Eva Langstein
+- Jonas Raabe
 
 
-
+-----------------------------------------
 
 MIT License
 
