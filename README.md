@@ -7,7 +7,6 @@ In diesem wunderbar super tollen Projekt, wird ein Dashboard erstellt, indem ana
 
 
 ## Autoren:
-- Alexia Pagotto
 - Anne Staskiewicz
 - Stefan Blume
 - Eva Langstein
