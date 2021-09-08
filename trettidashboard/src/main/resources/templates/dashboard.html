@@ -6,7 +6,26 @@
 </head>
 <h1 style=color:green>Tretty Dashboard</h1>
 <body>
-    <p th:text="'Hello, ' + ${name} + '!'" />
+    <p th:text="'Die Durchschnittdistanz beträgt' + ${Distanzdurchschnitt} + '.'" />
+    <p th:text="'Der durchschnittliche Zeitaufwand ist' + ${Zeitdurchschnitt} + '.'" />
+    <p th:text="'Die Durchschnittsgeschwindigkeit beträgt' + ${Geschwindigkeitsdurchschnitt} + '.'" />
+    <br>
+    <p th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tretty Rollern sind' + ${Kosten_Tretty} + '.'" />
+    <p th:text="'Die durchschnittlichen Kosten bei einer Buchung von Lime Rollern sind' + ${Kosten_Tretty} + '.'" />
+    <p th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tier Rollern sind' + ${Kosten_Tier} + '.'" />
+    <p th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tier Rollern sind' + ${Kosten_Tier} + '.'" />
+    <br>
+    <p th:text="'Der CO2-Ausstoß eines Autos auf der Strecke beträgt' + ${CO2_Car} + 'g, der des E-Scooters'+ ${CO2_Scooter} + 'g und der für ein Tretty-Fahrrad'+${CO2_Bicycle}+'g.'" />
+    <p th:text="'Auf der Fahrt mit einem Tretty-Fahrrad wird ' + ${Ersparnis_Car} + 'Gramm CO2 im Vergleich zu einem Auto gespart.'" />
+    <p th:text="'Auf der Fahrt mit einem Tretty-Fahrrad wird ' + ${Ersparnis_Scooter} + 'Gramm CO2 im Vergleich zu einem E-Scooter gespart.'" />
+    <br>
+    <p th:text="'Die minimale Fahrtdistanz eines Tretty-Fahrrads beträgt ' + ${Distanz_min} + 'km und die maximale Distanz'+ ${Distanz_max}+'km.'" />
+    <p th:text="'Die kürzeste Zeit bei der Fahrt mit einem Tretty-Fahrrad beträgt ' + ${Zeit_min} + 'Minuten und die längste Dauer beträgt'+ ${Zeit_max}+'Minuten.'" />
+    <p th:text="'Die maximlae Geschwindigkeit eines Tretty-Fahrrads waren ' + ${Geschwindigkeit_max} + 'km/h und die langsamste Geschwindigkeit beträgt'+ ${Geschwindigkeit_min}+'km/h.'" />
+    
+    <br>
+
+
     
 </body>
 </html>
