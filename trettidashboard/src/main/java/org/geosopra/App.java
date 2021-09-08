@@ -3,6 +3,8 @@ package org.geosopra;
 import java.io.*;
 import java.util.Scanner;
 
+import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.operation.TransformException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,8 +17,6 @@ public class App {
     public static void main(String[] args) throws Exception {
 
     	SpringApplication.run(App.class, args);
-     
-
 
         Datapoint[] dp_array = new Datapoint[279];
         int temp = 0;
@@ -51,7 +51,7 @@ public class App {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
         Scanner sc = new Scanner(new File(
-                "D:\\Dokumente\\GISopraProject\\routes_bikes.csv"));
+                "C:\\Users\\specki\\git\\GISopraProject\\routes_bikes.csv"));
         sc.useDelimiter("\n"); // sets the delimiter pattern
         sc.next();
         while (sc.hasNext()) // returns a boolean value test
@@ -69,7 +69,7 @@ public class App {
     format date string in datapoint object and return this
 
     */
-    public static Datapoint format(String date) {
+    public static Datapoint format(String date) throws FactoryException, TransformException, IOException {
         int Start_time_end_index = date.indexOf(';');
         int End_time_right_index = date.indexOf(';', Start_time_end_index + 1);
         int Start_X_right_index = date.indexOf(';', End_time_right_index + 1);
@@ -92,14 +92,34 @@ public class App {
 
         Datapoint row = new Datapoint();
 
+        long start_x_long = Long.parseLong(start_x);
+        long start_y_long = Long.parseLong(start_y);
+        long end_x_long = Long.parseLong(end_X);
+        long end_y_long = Long.parseLong(end_Y);
+
         row.setDistance(Double.parseDouble(distance));
         row.setEndTime(Long.parseLong(endtime));
-        row.setEndX(Long.parseLong(end_X));
-        row.setEndY(Long.parseLong(end_Y));
+        row.setEndX(end_x_long);
+        row.setEndY(end_y_long);
         row.setStartTime(Long.parseLong(starttime));
-        row.setStartX(Long.parseLong(start_x));
-        row.setStartY(Long.parseLong(start_y));
+        row.setStartX(start_x_long);
+        row.setStartY(start_y_long);
         row.setTime(Double.parseDouble(Time_in_Hours));
+
+        ConvertCoords converter = new ConvertCoords();
+
+        double[] latlonStart = converter.transformUTMToWGS84(start_x_long, start_y_long);
+        double[] latlonEnd = converter.transformUTMToWGS84(end_x_long, end_y_long);
+
+        DistanceTime distanceTime = new DistanceTime();
+
+        double[] distim = distanceTime.getDistanceTimeMatrix(latlonStart[0], latlonStart[1], latlonEnd[0], latlonEnd[1]);
+
+        System.out.println("Duration: " + distim[0]);
+        System.out.println("Distance: " + distim[1]);
+
+        row.setRoutingTime(distim[0]);
+        row.setRoutingDistance(distim[1]);
 
         return row;
 

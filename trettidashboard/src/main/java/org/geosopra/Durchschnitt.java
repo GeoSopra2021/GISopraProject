@@ -10,7 +10,7 @@ public abstract class Durchschnitt implements AnalystIn {
 		double ergebnis = 0;
 		for(int i = 0; i < dp.length; i++) {
 			ergebnis += getValue(dp[i]);
-		}
+			}
 		
 		ergebnis /= dp.length;
 		model.addAttribute(getKey(), ergebnis);

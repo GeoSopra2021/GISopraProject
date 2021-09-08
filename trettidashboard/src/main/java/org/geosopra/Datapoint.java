@@ -8,6 +8,8 @@ public class Datapoint {
 	private long startY;
 	private long endX;
 	private long endY;
+	private double routingDistance;
+	private double routingTime;
 	private double distance;
 	private double time;
 	/**
@@ -21,6 +23,33 @@ public class Datapoint {
 	 */
 	public void setDistance(double distance) {
 		this.distance = distance;
+	}
+	/**
+	 * @return the startTime
+	 */
+	/**
+	 * @return the routingDistance
+	 */
+	public double getRoutingDistance() {
+		return routingDistance;
+	}
+	/**
+	 * @param routingDistance the routingDistance to set
+	 */
+	public void setRoutingDistance(double routingDistance) {
+		this.routingDistance = routingDistance;
+	}
+	/**
+	 * @return the routingTime
+	 */
+	public double getRoutingTime() {
+		return routingTime;
+	}
+	/**
+	 * @param routingTime the routingTime to set
+	 */
+	public void setRoutingTime(double routingTime) {
+		this.routingTime = routingTime;
 	}
 	/**
 	 * @return the startTime
