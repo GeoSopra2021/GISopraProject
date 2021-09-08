@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.util.ResourceUtils;
 
 /**
  * Hello world! test
@@ -50,8 +51,9 @@ public class App {
     public static void scan(Datapoint[] dp_array, int temp) throws Exception {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
-        Scanner sc = new Scanner(new File(
-                "D:\\Dokumente\\GISopraProject\\routes_bikes.csv"));
+        String  fileName =  "classpath:routes_bikes.csv";
+        File file = ResourceUtils.getFile(fileName);
+        Scanner sc = new Scanner(file);
         sc.useDelimiter("\n"); // sets the delimiter pattern
         sc.next();
         while (sc.hasNext()) // returns a boolean value test
@@ -62,6 +64,8 @@ public class App {
 
         }
         sc.close(); // closes the scanner
+
+      
     }
 
 
