@@ -16,6 +16,16 @@ public abstract class Durchschnitt implements AnalystIn {
 		model.addAttribute(getKey(), ergebnis);
 	}
 	
+	public double analyseIntern(Datapoint[] dp) {
+		double ergebnis = 0;
+		for(int i = 0; i < dp.length; i++) {
+			ergebnis += getValue(dp[i]);
+		}
+		
+		ergebnis /= dp.length;
+		return ergebnis;
+	}
+	
 	public static class DistanzDurchschnitt extends Durchschnitt {
 
 		@Override
