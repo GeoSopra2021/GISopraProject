@@ -3,18 +3,26 @@ package org.geosopra;
 import java.io.*;
 import java.util.Scanner;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * Hello world!
  *
  */
-
+@SpringBootApplication
 public class App {
     public static void main(String[] args) throws Exception {
+
+    	SpringApplication.run(App.class, args);
+     
+
 
         Datapoint[] dp_array = new Datapoint[279];
         int temp = 0;
         scan(dp_array, temp);
         System.out.println("test" + dp_array[5].getDistance());
+
         AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
         double ergebnis = entfernung.analyse(dp_array);
         System.out.println("Die Durchschnittslänge ist " + ergebnis + " km");
