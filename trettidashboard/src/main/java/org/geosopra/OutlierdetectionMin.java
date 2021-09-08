@@ -1,25 +1,33 @@
 package org.geosopra;
 
+import org.springframework.ui.Model;
+
 public abstract class OutlierdetectionMin implements AnalystIn {
 
 	@Override
-	public double analyse(Datapoint[] dp) {
+	public void analyse(Datapoint[] dp, Model model) {
 		double ergebnis = 0;
 		for(int i = 0; i < dp.length; i++) {
 			if (getValue(dp[i]) < ergebnis) {
 				ergebnis = getValue(dp[i]);
 			}
 		}
-		return ergebnis;
+		model.addAttribute(getKey(), ergebnis);
 	}
 
 	public abstract double getValue(Datapoint dp);
+	public abstract String getKey();
 
 	public class DistanzDurchschnitt extends Durchschnitt {
 
 		@Override
 		public double getValue(Datapoint dp) {
 			return dp.getDistance();
+		}
+		
+		@Override
+		public String getKey() {
+			return "Distanz_min";
 		}
 
 	}
@@ -30,6 +38,11 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 		public double getValue(Datapoint dp) {
 			return dp.getTime();
 		}
+		
+		@Override
+		public String getKey() {
+			return "Zeit_min";
+		}
 
 	}
 
@@ -38,6 +51,11 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 		@Override
 		public double getValue(Datapoint dp) {
 			return dp.getDistance() / dp.getTime();
+		}
+		
+		@Override
+		public String getKey() {
+			return "Geschwindigkeit_min";
 		}
 
 	}
