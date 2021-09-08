@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.geotools:gt-cql:24-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/geotools/gt-cql/24-SNAPSHOT/gt-cql-24-20210827.210355-86.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/geotools/gt-cql/24-SNAPSHOT/gt-cql-24-20210827.210355-86-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/geotools/gt-cql/24-SNAPSHOT/gt-cql-24-20210827.210355-86-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
