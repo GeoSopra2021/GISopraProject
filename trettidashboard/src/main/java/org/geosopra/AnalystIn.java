@@ -4,7 +4,7 @@ import org.springframework.ui.Model;
 
 public interface AnalystIn {
 
-	public double analyse(Datapoint[] dp, Model model);
+	public void analyse(Datapoint[] dp, Model model);
 
 	
 	public abstract double getValue(Datapoint dp);
