@@ -32,7 +32,21 @@ public class Html_controller {
             e.printStackTrace();
         }
         AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
+      
         entfernung.analyse(dp_array, save_model);
+
+        Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
+        zeit.analyse(dp_array, save_model);
+       
+        
+        Kosten.Tretty tretty = new Kosten.Tretty();
+		 tretty.analyse(dp_array, save_model);
+		
+		Kosten.Lime lime = new Kosten.Lime();
+		lime.analyse(dp_array, save_model);
+		
+		Kosten.Tier tier = new Kosten.Tier();
+		tier.analyse(dp_array, save_model);
 
     }
 
