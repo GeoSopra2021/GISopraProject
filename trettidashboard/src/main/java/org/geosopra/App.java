@@ -3,21 +3,42 @@ package org.geosopra;
 import java.io.*;
 import java.util.Scanner;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
- * Hello world!
+ * Hello world! test
  *
  */
-
+@SpringBootApplication
 public class App {
     public static void main(String[] args) throws Exception {
+
+    	SpringApplication.run(App.class, args);
+     
+
 
         Datapoint[] dp_array = new Datapoint[279];
         int temp = 0;
         scan(dp_array, temp);
         System.out.println("test" + dp_array[5].getDistance());
-        AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
-        double ergebnis = entfernung.analyse(dp_array);
+
+        Durchschnitt entfernung = new Durchschnitt.DistanzDurchschnitt();
+        double ergebnis = entfernung.analyseIntern(dp_array);
         System.out.println("Die Durchschnittslänge ist " + ergebnis + " km");
+        
+        Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
+        ergebnis = zeit.analyseIntern(dp_array);
+        System.out.println("Die Durchschnittszeit ist " + ergebnis * 100 + " min");
+        
+        Kosten.Tretty tretty = new Kosten.Tretty();
+		System.out.println("Kosten Tretty: " + tretty.analyseIntern(dp_array));
+		
+		Kosten.Lime lime = new Kosten.Lime();
+		System.out.println("Kosten Lime: " + lime.analyseIntern(dp_array));
+		
+		Kosten.Tier tier = new Kosten.Tier();
+		System.out.println("Kosten Tier: " + tier.analyseIntern(dp_array));
 
     }
 
@@ -30,7 +51,7 @@ public class App {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
         Scanner sc = new Scanner(new File(
-                "C:\\Users\\Timo\\OneDrive - Universität Münster (1)\\6. Fachsemester_SS_2021\\GISopraProject\\routes_bikes.csv"));
+                "D:\\Dokumente\\GISopraProject\\routes_bikes.csv"));
         sc.useDelimiter("\n"); // sets the delimiter pattern
         sc.next();
         while (sc.hasNext()) // returns a boolean value test
