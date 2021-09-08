@@ -19,9 +19,11 @@ public abstract class CO2 implements AnalystIn {
         System.out.println("Auf der Fahrt mit einem Tretty-Fahrrad wird" +
                 ersparnis(scooter,bicycle)+ " Gramm CO2 im Vergleich zu einem" +
                 "E-Scooter gespart.");
+
                 return ds;
         }
     
+
 
     /**
      * CO2 Ersparnis eines Tretty-Fahrrads gegenüber der selben Durchschnittsstrecke

@@ -26,6 +26,19 @@ public class App {
         AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
         double ergebnis = entfernung.analyse(dp_array);
         System.out.println("Die Durchschnittslänge ist " + ergebnis + " km");
+        
+        AnalystIn zeit = new Durchschnitt.ZeitDurchschnitt();
+        ergebnis = zeit.analyse(dp_array);
+        System.out.println("Die Durchschnittszeit ist " + ergebnis * 100 + " min");
+        
+        Kosten.Tretty tretty = new Kosten.Tretty();
+		System.out.println("Kosten Tretty: " + tretty.analyse(dp_array));
+		
+		Kosten.Lime lime = new Kosten.Lime();
+		System.out.println("Kosten Lime: " + lime.analyse(dp_array));
+		
+		Kosten.Tier tier = new Kosten.Tier();
+		System.out.println("Kosten Tier: " + tier.analyse(dp_array));
 
     }
 
@@ -38,7 +51,7 @@ public class App {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
         Scanner sc = new Scanner(new File(
-                "C:\\Users\\Timo\\OneDrive - Universität Münster (1)\\6. Fachsemester_SS_2021\\GISopraProject\\routes_bikes.csv"));
+                "D:\\Dokumente\\GISopraProject\\routes_bikes.csv"));
         sc.useDelimiter("\n"); // sets the delimiter pattern
         sc.next();
         while (sc.hasNext()) // returns a boolean value test
