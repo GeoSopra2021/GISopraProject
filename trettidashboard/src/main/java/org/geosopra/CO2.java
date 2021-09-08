@@ -1,9 +1,11 @@
 package org.geosopra;
 
+import org.springframework.ui.Model;
+
 public abstract class CO2 implements AnalystIn {
 
     @Override
-    public double analyse(Datapoint[] dp){
+    public double analyse(Datapoint[] dp, Model model){
         Durchschnitt.DistanzDurchschnitt distanz = new Durchschnitt.DistanzDurchschnitt();
 
          double ds = distanz.analyse(dp);
@@ -20,7 +22,9 @@ public abstract class CO2 implements AnalystIn {
                 ersparnis(scooter,bicycle)+ " Gramm CO2 im Vergleich zu einem" +
                 "E-Scooter gespart.");
 
-                return ds;
+        model.addAttribute("CO2_Car", car);
+        model.addAttribute("CO2_Scooter", scooter);
+        model.addAttribute("CO2_Bicycle", bicycle);
         }
     
 
