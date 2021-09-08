@@ -1,19 +1,24 @@
 package org.geosopra;
 
-public abstract class Kosten implements AnalystIn{
+import org.springframework.ui.Model;
 
+public abstract class Kosten implements AnalystIn{
+	
 	@Override
-	public double analyse(Datapoint[] dp) {
+	public void analyse(Datapoint[] dp, Model model) {
 		Durchschnitt.ZeitDurchschnitt ds = new Durchschnitt.ZeitDurchschnitt();
 		
-		return getPreis().getGb() + ds.analyse(dp) * 100 * getPreis().getPpm();
+		double ergebnis = getPreis().getGb() + ds.analyse(dp) * 100 * getPreis().getPpm();
+		
+		model.addAttribute(getKey(), ergebnis);
 	}
 	
 	public abstract Preis getPreis();
+	public abstract String getKey();
 
 	@Override
 	public double getValue(Datapoint dp) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 	
@@ -24,6 +29,11 @@ public abstract class Kosten implements AnalystIn{
 		@Override
 		public Preis getPreis() {
 			return roller;
+		}
+
+		@Override
+		public String getKey() {
+			return "Kosten_Tretty";
 		}
 		
 	}
@@ -37,6 +47,11 @@ public abstract class Kosten implements AnalystIn{
 			return roller;
 		}
 		
+		@Override
+		public String getKey() {
+			return "Kosten_Lime";
+		}
+		
 	}
 	
 	public static class Tier extends Kosten{
@@ -46,6 +61,11 @@ public abstract class Kosten implements AnalystIn{
 		@Override
 		public Preis getPreis() {
 			return roller;
+		}
+		
+		@Override
+		public String getKey() {
+			return "Kosten_Tier";
 		}
 		
 	}
