@@ -23,22 +23,22 @@ public class App {
         scan(dp_array, temp);
         System.out.println("test" + dp_array[5].getDistance());
 
-        AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
-        double ergebnis = entfernung.analyse(dp_array);
+        Durchschnitt entfernung = new Durchschnitt.DistanzDurchschnitt();
+        double ergebnis = entfernung.analyseIntern(dp_array);
         System.out.println("Die Durchschnittslänge ist " + ergebnis + " km");
         
-        AnalystIn zeit = new Durchschnitt.ZeitDurchschnitt();
-        ergebnis = zeit.analyse(dp_array);
+        Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
+        ergebnis = zeit.analyseIntern(dp_array);
         System.out.println("Die Durchschnittszeit ist " + ergebnis * 100 + " min");
         
         Kosten.Tretty tretty = new Kosten.Tretty();
-		System.out.println("Kosten Tretty: " + tretty.analyse(dp_array));
+		System.out.println("Kosten Tretty: " + tretty.analyseIntern(dp_array));
 		
 		Kosten.Lime lime = new Kosten.Lime();
-		System.out.println("Kosten Lime: " + lime.analyse(dp_array));
+		System.out.println("Kosten Lime: " + lime.analyseIntern(dp_array));
 		
 		Kosten.Tier tier = new Kosten.Tier();
-		System.out.println("Kosten Tier: " + tier.analyse(dp_array));
+		System.out.println("Kosten Tier: " + tier.analyseIntern(dp_array));
 
     }
 
