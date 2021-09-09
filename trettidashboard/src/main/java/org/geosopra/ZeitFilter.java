@@ -36,9 +36,9 @@ public class ZeitFilter {
     	int monthBegin = Integer.parseInt(begin.substring(5, 6));
     	int dayBegin = Integer.parseInt(begin.substring(8, 9));
     	
-    	int yearEnd = Integer.parseInt(begin.substring(0, 3));
-    	int monthEnd = Integer.parseInt(begin.substring(5, 6));
-    	int dayEnd = Integer.parseInt(begin.substring(8, 9));
+    	int yearEnd = Integer.parseInt(end.substring(0, 3));
+    	int monthEnd = Integer.parseInt(end.substring(5, 6));
+    	int dayEnd = Integer.parseInt(end.substring(8, 9));
     	
     	long unixBegin = umrechnen(yearBegin, monthBegin, dayBegin);
     	long unixEnd = umrechnen(yearEnd, monthEnd, dayEnd);
