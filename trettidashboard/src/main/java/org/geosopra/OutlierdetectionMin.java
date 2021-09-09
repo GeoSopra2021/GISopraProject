@@ -15,10 +15,10 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 		model.addAttribute(getKey(), ergebnis);
 	}
 
-	public abstract double getValue(Datapoint dp);
-	public abstract String getKey();
+	public  abstract double getValue(Datapoint dp);
+	public  abstract String getKey();
 
-	public class DistanzDurchschnitt extends Durchschnitt {
+	public static class Outlierdetection_Distance_min extends OutlierdetectionMin {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -32,7 +32,7 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 
 	}
 
-	public class ZeitDurchschnitt extends Durchschnitt {
+	public static class Outlierdetection_zeit_min extends OutlierdetectionMin {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -46,7 +46,7 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 
 	}
 
-	public class GeschwindigkeitDurchschnitt extends Durchschnitt {
+	public static class Outlierdetection_Geschwindigkeit_min extends OutlierdetectionMin {
 
 		@Override
 		public double getValue(Datapoint dp) {

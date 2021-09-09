@@ -2,14 +2,14 @@ package org.geosopra;
 
 import org.springframework.ui.Model;
 
-public abstract class CO2 implements AnalystIn {
+public class CO2 implements AnalystIn {
 
     @Override
     public void analyse(Datapoint[] dp, Model model){
         Durchschnitt.DistanzDurchschnitt distanz = new Durchschnitt.DistanzDurchschnitt();
 
          double ds = distanz.analyseIntern(dp);
-         double car = 126 * ds;
+         double car = 257 * ds;
          double scooter = 126 * ds;
          double bicycle = 5 * ds;
          System.out.println("Der CO2-Ausstoß eines Autos auf der Strecke" +
@@ -25,6 +25,8 @@ public abstract class CO2 implements AnalystIn {
         model.addAttribute("CO2_Car", car);
         model.addAttribute("CO2_Scooter", scooter);
         model.addAttribute("CO2_Bicycle", bicycle);
+        model.addAttribute("CO2_saving_Car_Tretty", (car-bicycle));
+        model.addAttribute("CO2_saving_Scooter_Tretty", (scooter-bicycle));
         }
     
 
@@ -39,6 +41,14 @@ public abstract class CO2 implements AnalystIn {
          // double ersparnisCar = double car - double bicycle;
          //double ersparnisScooter = double scooter - double bicycle;
 
+    }
+
+
+
+    @Override
+    public double getValue(Datapoint dp) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
 }

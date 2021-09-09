@@ -36,6 +36,10 @@ public class Html_controller {
 
         Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
         zeit.analyse(dp_array, save_model);
+
+        Durchschnitt Geschwindigkeit = new Durchschnitt.GeschwindigkeitDurchschnitt();
+        Geschwindigkeit.analyse(dp_array, save_model);
+       
        
         
         Kosten.Tretty tretty = new Kosten.Tretty();
@@ -46,6 +50,32 @@ public class Html_controller {
 		
 		Kosten.Tier tier = new Kosten.Tier();
 		tier.analyse(dp_array, save_model);
+
+        AnalystIn co2_in_g = new CO2();
+        co2_in_g.analyse(dp_array, save_model);
+
+
+        //Minimum
+        AnalystIn outlier_detection_distance_min = new OutlierdetectionMin.Outlierdetection_Distance_min();
+        outlier_detection_distance_min.analyse(dp_array, save_model);
+
+        AnalystIn outlier_detection_time_min = new OutlierdetectionMin.Outlierdetection_zeit_min();
+        outlier_detection_time_min.analyse(dp_array, save_model);
+
+        AnalystIn outlier_detection_Geschwindigkeit_min = new OutlierdetectionMin.Outlierdetection_Geschwindigkeit_min();
+        outlier_detection_Geschwindigkeit_min.analyse(dp_array, save_model);
+
+
+
+        //Maximum
+        AnalystIn outlier_detection_distance_max = new OutlierdetectionMax.Outlierdetection_Distance_max();
+        outlier_detection_distance_max.analyse(dp_array, save_model);
+
+        AnalystIn outlier_detection_time_max = new OutlierdetectionMax.Outlierdetection_zeit_max();
+        outlier_detection_time_max.analyse(dp_array, save_model);
+
+        AnalystIn outlier_detection_Geschwindigkeit_max = new OutlierdetectionMax.Outlierdetection_Geschwindigkeit_max();
+        outlier_detection_Geschwindigkeit_max.analyse(dp_array, save_model);
 
     
 

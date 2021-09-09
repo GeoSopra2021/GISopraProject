@@ -18,7 +18,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 	public abstract double getValue(Datapoint dp);
 	public abstract String getKey();
 	
-	public class DistanzDurchschnitt extends Durchschnitt {
+	public static class Outlierdetection_Distance_max extends OutlierdetectionMax {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -32,7 +32,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 
 	}
 	
-	public class ZeitDurchschnitt extends Durchschnitt {
+	public static class Outlierdetection_zeit_max extends OutlierdetectionMax {
 
 		@Override
 		public double getValue(Datapoint dp) {
@@ -46,7 +46,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 
 	}
 	
-	public class GeschwindigkeitDurchschnitt extends Durchschnitt {
+	public static class Outlierdetection_Geschwindigkeit_max extends OutlierdetectionMax {
 
 		@Override
 		public double getValue(Datapoint dp) {
