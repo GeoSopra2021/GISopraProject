@@ -26,8 +26,8 @@ public class ZeitFilter {
     public long umrechnen(int year, int month, int day) {
     	Date datum = new Date(year, month, day);
     	
-    	long ergebnis = datum.getTime();
-    	return ergebnis;
+    	long unixTime = datum.getTime();
+    	return unixTime;
     }
 
 
