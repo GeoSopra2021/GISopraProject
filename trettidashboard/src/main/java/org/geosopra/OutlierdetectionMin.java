@@ -6,12 +6,13 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 
 	@Override
 	public void analyse(Datapoint[] dp, Model model) {
-		double ergebnis = 0;
+		double ergebnis = getValue(dp[1]);
 		for(int i = 0; i < dp.length; i++) {
 			if (getValue(dp[i]) < ergebnis) {
 				ergebnis = getValue(dp[i]);
 			}
 		}
+		System.out.println("Min: " + ergebnis);
 		model.addAttribute(getKey(), ergebnis);
 	}
 
@@ -50,7 +51,7 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return dp.getDistance() / dp.getTime();
+			return Math.round((dp.getDistance() / dp.getTime())*100)/100d;
 		}
 		
 		@Override
