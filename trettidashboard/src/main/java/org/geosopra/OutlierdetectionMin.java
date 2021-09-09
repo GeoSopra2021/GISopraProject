@@ -2,7 +2,7 @@ package org.geosopra;
 
 import org.springframework.ui.Model;
 
-public abstract class OutlierdetectionMin implements AnalystIn {
+public  class OutlierdetectionMin implements AnalystIn {
 
 	@Override
 	public void analyse(Datapoint[] dp, Model model) {
@@ -15,8 +15,8 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 		model.addAttribute(getKey(), ergebnis);
 	}
 
-	public abstract double getValue(Datapoint dp);
-	public abstract String getKey();
+	//public  abstract double getValue(Datapoint dp);
+	//public  abstract String getKey();
 
 	public class DistanzDurchschnitt extends Durchschnitt {
 

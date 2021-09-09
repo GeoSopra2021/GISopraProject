@@ -36,6 +36,10 @@ public class Html_controller {
 
         Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
         zeit.analyse(dp_array, save_model);
+
+        Durchschnitt Geschwindigkeit = new Durchschnitt.GeschwindigkeitDurchschnitt();
+        Geschwindigkeit.analyse(dp_array, save_model);
+       
        
         
         Kosten.Tretty tretty = new Kosten.Tretty();
@@ -46,6 +50,12 @@ public class Html_controller {
 		
 		Kosten.Tier tier = new Kosten.Tier();
 		tier.analyse(dp_array, save_model);
+
+        AnalystIn co2_in_g = new CO2();
+        co2_in_g.analyse(dp_array, save_model);
+
+        AnalystIn outlier_detection_min = new OutlierdetectionMin();
+        co2_in_g.analyse(dp_array, save_model);
 
     
 

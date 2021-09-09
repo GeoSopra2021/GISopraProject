@@ -2,7 +2,7 @@ package org.geosopra;
 
 import org.springframework.ui.Model;
 
-public abstract class OutlierdetectionMax implements AnalystIn {
+public class OutlierdetectionMax implements AnalystIn {
 	
 	@Override
 	public void analyse(Datapoint[] dp, Model model) {
