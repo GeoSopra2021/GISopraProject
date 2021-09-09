@@ -15,6 +15,7 @@ import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
@@ -242,9 +243,29 @@ public class Html_controller {
 
     }
 
-    @RequestMapping("/")
-    public String welcome(Model model) {
+    /*@RequestMapping("/")
+    public String dashboard(Model model) {
 
+
+        model.addAllAttributes(save_model.asMap());
+        model.asMap().forEach((k, e) -> {
+            System.out.println(k);
+            System.out.println(e);
+        });
+        
+        return "dashboard";
+    }*/
+
+    @RequestMapping("/")
+    public String dashboard_with_filter(
+        @RequestParam(required = false, value= "trip-start") String start,
+        @RequestParam(required = false, value ="trip-end") String end, 
+        Model model
+    ) {
+        System.out.println("start");
+        System.out.println(start);
+        System.out.println("end");
+        System.out.println(end);
 
         model.addAllAttributes(save_model.asMap());
         model.asMap().forEach((k, e) -> {
