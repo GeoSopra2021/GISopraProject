@@ -32,8 +32,6 @@ public class ConvertCoords {
         double latitude = latLng.getOrdinate(0);
         double longitude = latLng.getOrdinate(1);
 
-        System.out.println( latitude + "," + longitude);
-
         return new double[]{latitude, longitude};
 
     }
