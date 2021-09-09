@@ -6,7 +6,8 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 	
 	@Override
 	public void analyse(Datapoint[] dp, Model model) {
-		double ergebnis = getValue(dp[1]);
+		if(dp.length == 0)throw new IllegalStateException("Der Datapointarray ist leer");
+		double ergebnis = getValue(dp[0]);
 		for(int i = 0; i < dp.length; i++) {
 			if (getValue(dp[i]) > ergebnis) {
 				ergebnis = getValue(dp[i]);
