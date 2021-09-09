@@ -3,6 +3,7 @@ package org.geosopra;
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class ZeitFilter {
 
@@ -20,6 +21,13 @@ public class ZeitFilter {
         }
 
         return gefiltertesArray;
+    }
+    
+    public long umrechnen(int year, int month, int day) {
+    	Date datum = new Date(year, month, day);
+    	
+    	long ergebnis = datum.getTime();
+    	return ergebnis;
     }
 
 
