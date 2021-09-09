@@ -14,7 +14,7 @@ In diesem wunderbar super tollen Projekt, wird ein Dashboard erstellt, indem ana
 - Maike Dhana Schröder
 - Timo Lietmeyer
 
-## honorable mentions:
+### honorable mentions:
 - Stefan Blume
 
 -----------------------------------------
