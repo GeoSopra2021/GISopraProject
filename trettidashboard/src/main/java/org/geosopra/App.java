@@ -47,36 +47,17 @@ public class App {
     }
 
 
-    /*
-    Scan method, for loading CSV Data
 
-    */
-    public static void scan(Datapoint[] dp_array, int temp) throws Exception {
-        // parsing a CSV file into Scanner class constructor
-        // add personal path in String
-        String  fileName =  "classpath:routes_bikes.csv";
-        File file = ResourceUtils.getFile(fileName);
-        Scanner sc = new Scanner(file);
-        sc.useDelimiter("\n"); // sets the delimiter pattern
-        sc.next();
-        while (sc.hasNext()) // returns a boolean value test
-        {
-
-            dp_array[temp] = format(sc.next());
-            temp++;
-
-        }
-        sc.close(); // closes the scanner
-
-      
-    }
 
 
     /*
     format date string in datapoint object and return this
 
     */
-    public static Datapoint format(String date) throws FactoryException, TransformException, IOException {
+    public static Datapoint format(String date) throws FactoryException, TransformException, IOException, InterruptedException {
+
+
+
         int Start_time_end_index = date.indexOf(';');
         int End_time_right_index = date.indexOf(';', Start_time_end_index + 1);
         int Start_X_right_index = date.indexOf(';', End_time_right_index + 1);
@@ -113,26 +94,10 @@ public class App {
         row.setStartY(start_y_long);
         row.setTime(Double.parseDouble(Time_in_Hours));
 
-        ConvertCoords converter = new ConvertCoords();
 
-        double[] latlonStart = converter.transformUTMToWGS84(start_x_long, start_y_long);
-        double[] latlonEnd = converter.transformUTMToWGS84(end_x_long, end_y_long);
-
-        DistanceTime distanceTime = new DistanceTime();
-
-        double[] distim = distanceTime.getDistanceTimeMatrix(latlonStart[0], latlonStart[1], latlonEnd[0], latlonEnd[1]);
-
-        System.out.println("Duration: " + distim[0]);
-        System.out.println("Distance: " + distim[1]);
-
-        row.setRoutingTime(distim[0]);
-        row.setRoutingDistance(distim[1]);
 
         return row;
 
-    }
-
-    public static void create_array(Datapoint row) {
     }
 
 }
