@@ -28,7 +28,6 @@ public class Html_controller {
         try {
             scan(dp_array, temp);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
@@ -47,6 +46,8 @@ public class Html_controller {
 		
 		Kosten.Tier tier = new Kosten.Tier();
 		tier.analyse(dp_array, save_model);
+
+    
 
     }
 
