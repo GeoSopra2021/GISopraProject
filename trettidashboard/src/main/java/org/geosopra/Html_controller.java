@@ -21,88 +21,55 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class Html_controller {
 
-    Model save_model = new ConcurrentModel();
+    Datapoint[] rohdaten_array = new Datapoint[279];
+
+    AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
+    Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
+    Durchschnitt Geschwindigkeit = new Durchschnitt.GeschwindigkeitDurchschnitt();
+    Kosten.Lime lime = new Kosten.Lime();
+    Kosten.Tretty tretty = new Kosten.Tretty();
+    Kosten.Tier tier = new Kosten.Tier();
+    AnalystIn co2_in_g = new CO2();
+
+    AnalystIn outlier_detection_distance_min = new OutlierdetectionMin.Outlierdetection_Distance_min();
+    AnalystIn outlier_detection_time_min = new OutlierdetectionMin.Outlierdetection_zeit_min();
+    AnalystIn outlier_detection_Geschwindigkeit_min = new OutlierdetectionMin.Outlierdetection_Geschwindigkeit_min();
+    AnalystIn outlier_detection_distance_max = new OutlierdetectionMax.Outlierdetection_Distance_max();
+    AnalystIn outlier_detection_time_max = new OutlierdetectionMax.Outlierdetection_zeit_max();
+    AnalystIn outlier_detection_Geschwindigkeit_max = new OutlierdetectionMax.Outlierdetection_Geschwindigkeit_max();
 
     @PostConstruct
     public void init() {
-        Datapoint[] dp_array = new Datapoint[279];
+
         int temp = 0;
 
         try {
-            scan(dp_array, temp);
+            scan(rohdaten_array, temp);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
-      
-        entfernung.analyse(dp_array, save_model);
-
-        Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
-        zeit.analyse(dp_array, save_model);
-
-        Durchschnitt Geschwindigkeit = new Durchschnitt.GeschwindigkeitDurchschnitt();
-        Geschwindigkeit.analyse(dp_array, save_model);
-       
-       
-        
-        Kosten.Tretty tretty = new Kosten.Tretty();
-		 tretty.analyse(dp_array, save_model);
-		
-		Kosten.Lime lime = new Kosten.Lime();
-		lime.analyse(dp_array, save_model);
-		
-		Kosten.Tier tier = new Kosten.Tier();
-		tier.analyse(dp_array, save_model);
-
-        AnalystIn co2_in_g = new CO2();
-        co2_in_g.analyse(dp_array, save_model);
-
-
-        //Minimum
-        AnalystIn outlier_detection_distance_min = new OutlierdetectionMin.Outlierdetection_Distance_min();
-        outlier_detection_distance_min.analyse(dp_array, save_model);
-
-        AnalystIn outlier_detection_time_min = new OutlierdetectionMin.Outlierdetection_zeit_min();
-        outlier_detection_time_min.analyse(dp_array, save_model);
-
-        AnalystIn outlier_detection_Geschwindigkeit_min = new OutlierdetectionMin.Outlierdetection_Geschwindigkeit_min();
-        outlier_detection_Geschwindigkeit_min.analyse(dp_array, save_model);
-
-
-
-        //Maximum
-        AnalystIn outlier_detection_distance_max = new OutlierdetectionMax.Outlierdetection_Distance_max();
-        outlier_detection_distance_max.analyse(dp_array, save_model);
-
-        AnalystIn outlier_detection_time_max = new OutlierdetectionMax.Outlierdetection_zeit_max();
-        outlier_detection_time_max.analyse(dp_array, save_model);
-
-        AnalystIn outlier_detection_Geschwindigkeit_max = new OutlierdetectionMax.Outlierdetection_Geschwindigkeit_max();
-        outlier_detection_Geschwindigkeit_max.analyse(dp_array, save_model);
-
-    
 
     }
 
     /*
-    Scan method, for loading CSV Data
-
-    */
+     * Scan method, for loading CSV Data
+     * 
+     */
     public static void scan(Datapoint[] dp_array, int temp) throws Exception {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
-        //String  fileName =  "classpath:routes_bikes.csv";
-        String  fileName =  "classpath:routes_bikes_calculated_data.csv";
+        // String fileName = "classpath:routes_bikes.csv";
+        String fileName = "classpath:routes_bikes_calculated_data.csv";
         File file = ResourceUtils.getFile(fileName);
         Scanner sc = new Scanner(file);
         sc.useDelimiter("\n"); // sets the delimiter pattern
         boolean routingInfoIncluded = true;
-        //boolean routingInfoIncluded = sc.next().contains("Routing_Time;Routing_Distance");
-        if(!routingInfoIncluded){
+        // boolean routingInfoIncluded =
+        // sc.next().contains("Routing_Time;Routing_Distance");
+        if (!routingInfoIncluded) {
             overwriteCSV(fileName);
             getRoutingInfo(sc.next());
-        }
-        else{
+        } else {
             sc.next();
             System.out.println("routing info exists already");
             while (sc.hasNext()) // returns a boolean value test
@@ -115,16 +82,17 @@ public class Html_controller {
         }
     }
 
-    public static double convertToHours(double seconds){
-        return (seconds/60)/60;
+    public static double convertToHours(double seconds) {
+        return (seconds / 60) / 60;
     }
 
-    public static double convertToKM(double  meters){
-        return meters/1000;
+    public static double convertToKM(double meters) {
+        return meters / 1000;
     }
 
     /* writes a new csv file with old data and new routing info */
-    public static void overwriteCSV(String fileName) throws IOException, FactoryException, TransformException, InterruptedException {
+    public static void overwriteCSV(String fileName)
+            throws IOException, FactoryException, TransformException, InterruptedException {
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new File("C:\\Users\\specki\\git\\GISopraProject\\routes_bikes_calculated_data.csv"));
@@ -186,10 +154,11 @@ public class Html_controller {
 
         DistanceTime distanceTime = new DistanceTime();
 
-        double[] distim = distanceTime.getDistanceTimeMatrix(latlonStart[0], latlonStart[1], latlonEnd[0], latlonEnd[1]);
+        double[] distim = distanceTime.getDistanceTimeMatrix(latlonStart[0], latlonStart[1], latlonEnd[0],
+                latlonEnd[1]);
 
         System.out.println("API call");
-        return new double[]{distim[0], distim[1]};
+        return new double[] { distim[0], distim[1] };
     }
 
     /*
@@ -243,35 +212,47 @@ public class Html_controller {
 
     }
 
-    /*@RequestMapping("/")
-    public String dashboard(Model model) {
-
-
-        model.addAllAttributes(save_model.asMap());
-        model.asMap().forEach((k, e) -> {
-            System.out.println(k);
-            System.out.println(e);
-        });
-        
-        return "dashboard";
-    }*/
+    /*
+     * @RequestMapping("/") public String dashboard(Model model) {
+     * 
+     * 
+     * model.addAllAttributes(save_model.asMap()); model.asMap().forEach((k, e) -> {
+     * System.out.println(k); System.out.println(e); });
+     * 
+     * return "dashboard"; }
+     */
 
     @RequestMapping("/")
-    public String dashboard_with_filter(
-        @RequestParam(required = false, value= "trip-start") String start,
-        @RequestParam(required = false, value ="trip-end") String end, 
-        Model model
-    ) {
+    public String dashboard_with_filter(@RequestParam(required = false, value = "trip-start") String start,
+            @RequestParam(required = false, value = "trip-end") String end, Model model) {
         System.out.println("start");
         System.out.println(start);
         System.out.println("end");
         System.out.println(end);
 
-        model.addAllAttributes(save_model.asMap());
-        model.asMap().forEach((k, e) -> {
-            System.out.println(k);
-            System.out.println(e);
-        });
+        ZeitFilter filtern = new ZeitFilter();
+        Datapoint[] gefiltertes_array = filtern.datumabfrage(rohdaten_array, start, end);
+
+        entfernung.analyse(gefiltertes_array, model);
+        zeit.analyse(gefiltertes_array, model);
+        Geschwindigkeit.analyse(gefiltertes_array, model);
+        tretty.analyse(gefiltertes_array, model);
+        lime.analyse(gefiltertes_array, model);
+        tier.analyse(gefiltertes_array, model);
+        co2_in_g.analyse(gefiltertes_array, model);
+
+        // Minimum
+        outlier_detection_distance_min.analyse(gefiltertes_array, model);
+        outlier_detection_time_min.analyse(gefiltertes_array, model);
+        outlier_detection_Geschwindigkeit_min.analyse(gefiltertes_array, model);
+
+        // Maximum
+        outlier_detection_distance_max.analyse(gefiltertes_array,  model);
+        outlier_detection_time_max.analyse(gefiltertes_array,  model);
+        outlier_detection_Geschwindigkeit_max.analyse(gefiltertes_array, model);
+
+        model.addAllAttributes(model.asMap());
+
         return "dashboard";
     }
 }
