@@ -45,10 +45,10 @@ public class Dataloader {
 
         Datapoint row = new Datapoint();
 
-        long start_x_long = Long.parseLong(start_x);
-        long start_y_long = Long.parseLong(start_y);
-        long end_x_long = Long.parseLong(end_X);
-        long end_y_long = Long.parseLong(end_Y);
+        float start_x_long = Float.parseFloat(start_x);
+        float start_y_long = Float.parseFloat(start_y);
+        float end_x_long = Float.parseFloat(end_X);
+        float end_y_long = Float.parseFloat(end_Y);
 
         row.setDistance(Double.parseDouble(distance));
         row.setEndTime(Long.parseLong(endtime));

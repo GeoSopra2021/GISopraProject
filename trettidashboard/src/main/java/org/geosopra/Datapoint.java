@@ -4,10 +4,10 @@ public class Datapoint {
 	
 	private long startTime;
 	private long endTime;
-	private long startX;
-	private long startY;
-	private long endX;
-	private long endY;
+	private float startX;
+	private float startY;
+	private float endX;
+	private float endY;
 	private double routingDistance;
 	private double routingTime;
 	private double distance;
@@ -78,49 +78,49 @@ public class Datapoint {
 	/**
 	 * @return the startX
 	 */
-	public long getStartX() {
+	public float getStartX() {
 		return startX;
 	}
 	/**
 	 * @param startX the startX to set
 	 */
-	public void setStartX(long startX) {
+	public void setStartX(float startX) {
 		this.startX = startX;
 	}
 	/**
 	 * @return the startY
 	 */
-	public long getStartY() {
+	public float getStartY() {
 		return startY;
 	}
 	/**
 	 * @param startY the startY to set
 	 */
-	public void setStartY(long startY) {
+	public void setStartY(float startY) {
 		this.startY = startY;
 	}
 	/**
 	 * @return the endX
 	 */
-	public long getEndX() {
+	public float getEndX() {
 		return endX;
 	}
 	/**
 	 * @param endX the endX to set
 	 */
-	public void setEndX(long endX) {
+	public void setEndX(float endX) {
 		this.endX = endX;
 	}
 	/**
 	 * @return the endY
 	 */
-	public long getEndY() {
+	public float getEndY() {
 		return endY;
 	}
 	/**
 	 * @param endY the endY to set
 	 */
-	public void setEndY(long endY) {
+	public void setEndY(float endY) {
 		this.endY = endY;
 	}
 	/**
