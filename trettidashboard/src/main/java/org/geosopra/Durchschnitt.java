@@ -31,7 +31,7 @@ public abstract class Durchschnitt implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return dp.getDistance();
+			return dp.getRoutingDistance();
 		}
 
 		@Override
@@ -44,7 +44,7 @@ public abstract class Durchschnitt implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return dp.getTime();
+			return dp.getRoutingTime();
 		}
 		@Override
 		public String getKey() {
@@ -60,7 +60,7 @@ public abstract class Durchschnitt implements AnalystIn {
 		 * @return Durchschnittsgeschwindigkeit in km/h
 		 */
 		public double getValue(Datapoint dp) {
-			return dp.getDistance() / dp.getTime();
+			return dp.getRoutingDistance() / dp.getRoutingTime();
 		}
 		@Override
 		public String getKey() {

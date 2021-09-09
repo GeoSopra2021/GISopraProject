@@ -12,7 +12,6 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 				ergebnis = getValue(dp[i]);
 			}
 		}
-		System.out.println("Max: " + ergebnis);
 		model.addAttribute(getKey(), ergebnis);
 	}
 
@@ -23,7 +22,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return dp.getDistance();
+			return dp.getRoutingDistance();
 		}
 
 		@Override
@@ -37,7 +36,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return dp.getTime();
+			return dp.getRoutingTime();
 		}
 		
 		@Override
@@ -51,7 +50,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return Math.round((dp.getDistance() / dp.getTime())*100)/100d;
+			return Math.round((dp.getRoutingDistance() / dp.getRoutingTime())*100)/100d;
 		}
 		
 		@Override
