@@ -34,14 +34,18 @@
         th:text="'Die maximale Geschwindigkeit eines Tretty-Fahrrads waren ' + ${Geschwindigkeit_max} + ' km/h und die langsamste Geschwindigkeit beträgt '+ ${Geschwindigkeit_min}+' km/h.'" />
     <br>
     <br>
-    <form action="senden.html" id="person">
+    <form  id="person">
         <label for="start">Start date:</label>
 
         <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+
+        <label for="end">end date:</label>
+
+        <input type="date" id="end" name="trip-end" value="2018-07-25" min="2018-01-01" max="2018-12-31">
         <button type="submit">Eingaben absenden</button>
     </form>
 
-
+    
 
 
     <br>
