@@ -1,7 +1,6 @@
 package org.geosopra;
 
 import org.springframework.ui.Model;
-
 public class CO2 implements AnalystIn {
 
     @Override
@@ -9,11 +8,11 @@ public class CO2 implements AnalystIn {
         Durchschnitt.DistanzDurchschnitt distanz = new Durchschnitt.DistanzDurchschnitt();
 
          double ds = distanz.analyseIntern(dp);
-         double car = 257 * ds;
-         double scooter = 126 * ds;
-         double bicycle = 5 * ds;
+         double car = Math.round(257 * ds * 100.0) / 100.0;
+         double scooter = Math.round(126 * ds * 100.0) / 100.0;
+         double bicycle = Math.round(5 * ds * 100.0) / 100.0;
          System.out.println("Der CO2-Ausstoß eines Autos auf der Strecke" +
-                 "beträgt "+ car +" g, der des E-Scooters" + scooter +
+                 "beträgt "+ car +" g, der des E-Scooters " + scooter +
                  " g und der für ein Tretty-Fahrrad " + bicycle + " g.");
          System.out.println("Auf der Fahrt mit einem Tretty-Fahrrad wird" +
                  ersparnis(car,bicycle)+ " Gramm CO2 im Vergleich zu einem" +
