@@ -18,7 +18,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
     	SpringApplication.run(App.class, args);
-        
+
         /*
         Datapoint[] dp_array = new Datapoint[279];
         int temp = 0;

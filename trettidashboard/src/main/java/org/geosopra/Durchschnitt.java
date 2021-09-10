@@ -13,7 +13,7 @@ public abstract class Durchschnitt implements AnalystIn {
 			}
 		
 		ergebnis /= dp.length;
-		ergebnis = Math.round(ergebnis * 100)/100d;
+		ergebnis = Math.round(ergebnis * 100.0)/100.0;
 		model.addAttribute(getKey(), ergebnis);
 	}
 	

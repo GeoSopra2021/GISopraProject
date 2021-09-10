@@ -1,9 +1,6 @@
 package org.geosopra;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 import org.opengis.referencing.FactoryException;
@@ -12,7 +9,23 @@ import org.springframework.util.ResourceUtils;
 
 public class Dataloader {
 
+    //static public String fileName = "classpath:routes_bikes.csv";
+    static public String fileName = "classpath:routes_bikes_calculated_data.csv";
 
+    /* counts the number of rows in the csv file */
+    public int countCSVRows() throws FileNotFoundException {
+        File file = ResourceUtils.getFile(fileName);
+        Scanner sc = new Scanner(file);
+        sc.useDelimiter("\n");
+        int count = 0;
+        while (sc.hasNext()) // returns a boolean value test
+        {
+            count++;
+            sc.next();
+        }
+        sc.close();
+        return count;
+    }
 
     /*
      * format date string in datapoint object and return this
@@ -72,8 +85,7 @@ public class Dataloader {
     public static void scan(Datapoint[] dp_array, int temp) throws Exception {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
-        //String fileName = "classpath:routes_bikes.csv";
-        String fileName = "classpath:routes_bikes_calculated_data.csv";
+
         File file = ResourceUtils.getFile(fileName);
         Scanner sc = new Scanner(file);
         sc.useDelimiter("\n"); // sets the delimiter pattern
