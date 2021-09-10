@@ -8,10 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.*;
+
 @Controller
 public class Html_controller {
 
-    Datapoint[] rohdaten_array = new Datapoint[4274];
+    int csvRowNumber = getCSVRowNumber();
+    Datapoint[] rohdaten_array = new Datapoint[csvRowNumber];
 
     AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
     Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
@@ -28,6 +31,14 @@ public class Html_controller {
     AnalystIn outlier_detection_time_max = new OutlierdetectionMax.Outlierdetection_zeit_max();
     AnalystIn outlier_detection_Geschwindigkeit_max = new OutlierdetectionMax.Outlierdetection_Geschwindigkeit_max();
 
+    public Html_controller() throws IOException {
+    }
+
+    public int getCSVRowNumber() throws IOException {
+        Dataloader dataloader = new Dataloader();
+        return dataloader.countCSVRows();
+    }
+
     @PostConstruct
     public void init() {
 
@@ -40,6 +51,8 @@ public class Html_controller {
         }
 
     }
+
+
 
     
 

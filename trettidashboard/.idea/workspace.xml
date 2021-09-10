@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="73966332-283f-4f39-badf-cacaacee72d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/geosopra/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/geosopra/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/geosopra/Dataloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/geosopra/Dataloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/geosopra/Html_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/geosopra/Html_controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,12 +88,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/geosopra/Html_controller.java</url>
-          <line>36</line>
+          <line>47</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/geosopra/Html_controller.java</url>
-          <line>32</line>
+          <line>43</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
