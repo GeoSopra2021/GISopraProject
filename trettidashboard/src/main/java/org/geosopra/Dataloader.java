@@ -6,13 +6,24 @@ import java.util.Scanner;
 import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.operation.TransformException;
 import org.springframework.util.ResourceUtils;
+/**
+ * Class to load a CSV Data from resource folder
+ * 
+ */
+
 
 public class Dataloader {
 
-    //static public String fileName = "classpath:routes_bikes.csv";
+    //declaration of path
     static public String fileName = "classpath:routes_bikes_calculated_data.csv";
 
-    /* counts the number of rows in the csv file */
+  
+
+    /**
+     * counts the number of rows in the csv file
+     * @return count, variable to save the number of csv rows
+     * @throws FileNotFoundException
+     */
     public int countCSVRows() throws FileNotFoundException {
         File file = ResourceUtils.getFile(fileName);
         Scanner sc = new Scanner(file);
@@ -27,10 +38,16 @@ public class Dataloader {
         return count;
     }
 
-    /*
-     * format date string in datapoint object and return this
-     * 
-     */
+    
+
+     /**
+      * format date string in datapoint object and return this
+      * @param date
+      * @return row, datapoint Object
+      * @throws FactoryException
+      * @throws TransformException
+      * @throws IOException
+      */
     public static Datapoint format(String date) throws FactoryException, TransformException, IOException {
         int Start_time_end_index = date.indexOf(';');
         int End_time_right_index = date.indexOf(';', Start_time_end_index + 1);
@@ -78,10 +95,14 @@ public class Dataloader {
 
     }
 
-    /*
-     * Scan method, for loading CSV Data
-     * 
-     */
+  
+
+     /**
+      * Scan method, for loading CSV Data
+      * @param dp_array
+      * @param temp
+      * @throws Exception
+      */
     public static void scan(Datapoint[] dp_array, int temp) throws Exception {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
@@ -108,7 +129,17 @@ public class Dataloader {
         }
     }
 
-    /* writes a new csv file with old data and new routing info */
+
+
+  
+    /**
+     * writes a new csv file with old data and new routing info
+     * @param fileName
+     * @throws IOException
+     * @throws FactoryException
+     * @throws TransformException
+     * @throws InterruptedException
+     */
     public static void overwriteCSV(String fileName)
             throws IOException, FactoryException, TransformException, InterruptedException {
         PrintWriter pw = null;
@@ -150,7 +181,15 @@ public class Dataloader {
     }
 
 
-    /* gets routing info for a row and return it */
+
+    /**
+     * gets routing info for a row and return it 
+     * @param date
+     * @return routinginfo as array[][]
+     * @throws FactoryException
+     * @throws TransformException
+     * @throws IOException
+     */
     public static double[] getRoutingInfo(String date) throws FactoryException, TransformException, IOException {
 
         int Start_time_end_index = date.indexOf(';');
@@ -186,11 +225,20 @@ public class Dataloader {
     }
 
 
-    
+    /**
+     * convert seconds to hours
+     * @param seconds
+     * @return hour as double
+     */
     public static double convertToHours(double seconds) {
         return (seconds / 60) / 60;
     }
 
+    /**
+     * convert metres to km
+     * @param meters
+     * @return km as double
+     */
     public static double convertToKM(double meters) {
         return meters / 1000;
     }
