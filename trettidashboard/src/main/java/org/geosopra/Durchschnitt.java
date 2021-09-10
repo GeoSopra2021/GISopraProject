@@ -69,7 +69,7 @@ public abstract class Durchschnitt implements AnalystIn {
 		/**
 		 * If-Abfrage zum Abfangen von NaN Werten der Routing Time
 		 */
-		
+
 		@Override
 		public void analyse(Datapoint[] dp, Model model) {
 			double ergebnis = 0;
