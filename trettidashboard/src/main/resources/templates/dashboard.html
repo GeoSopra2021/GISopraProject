@@ -10,46 +10,64 @@
 
 <body>
 
-    <img style="float:right;" th:src="@{Tretti.gif}" width="270" height="270" />
-    <p th:text="'Die Durchschnittsdistanz beträgt ' + ${DistanzDurchschnitt} + ' km.'" />
-    <p th:text="'Der durchschnittliche Zeitaufwand ist ' + ${ZeitDurchschnitt} + ' h.'" />
-    <p th:text="'Die Durchschnittsgeschwindigkeit beträgt ' + ${GeschwindigkeitDurchschnitt} + ' km/h.'" />
-    <br>
-    <p th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tretty Rollern sind ' + ${Kosten_Tretty} + ' €.'" />
-    <p th:text="'Die durchschnittlichen Kosten bei einer Buchung von Lime Rollern sind ' + ${Kosten_Lime} + ' €.'" />
-    <p th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tier Rollern sind ' + ${Kosten_Tier} + ' €.'" />
-    <br>
-    <p
-        th:text="'Der CO2-Ausstoß eines Autos auf einer durchschnittlich langen Strecke beträgt ' + ${CO2_Car} + ' g, der des E-Scooters '+ ${CO2_Scooter} + ' g und der für ein Tretty-Fahrrad '+${CO2_Bicycle}+' g.'" />
-    <p
-        th:text="'Auf der Fahrt mit einem Tretty-Fahrrad wird ' + ${CO2_saving_Car_Tretty} + ' Gramm CO2 im Vergleich zu einem Auto gespart.'" />
-    <p
-        th:text="'Auf der Fahrt mit einem Tretty-Fahrrad wird ' + ${CO2_saving_Scooter_Tretty} + ' Gramm CO2 im Vergleich zu einem E-Scooter gespart.'" />
-    <br>
-    <p
-        th:text="'Die kürzeste gefahrene Strecke mit einem Tretty-Fahrrads war ' + ${Distanz_min} + ' km lang und die längste Strecke '+ ${Distanz_max}+' km.'" />
-    <p
-        th:text="'Die kürzeste Fahrt mit einem Tretty-Fahrrad dauerte ' + ${Zeit_min} + ' Minuten und die längste Fahrtdauer dauerte '+ ${Zeit_max}+' Minuten.'" />
-    <p
-        th:text="'Die höchste Geschwindigkeit, die ein Nutzer mit einem Tretty-Fahrrad gefahren war, beträgt ' + ${Geschwindigkeit_max} + ' km/h und die langsamste Geschwindigkeit beträgt '+ ${Geschwindigkeit_min}+' km/h.'" />
-    <br>
-    <br>
-    <form  id="person">
-        <label for="start">Start date:</label>
 
-        <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+    <div>
+        <h2 th:if="${exist_data}">Keine Daten für den ausgewählten Zeitraum vorhanden!</h2>
 
-        <label for="end">end date:</label>
-
-        <input type="date" id="end" name="trip-end" value="2018-07-25" min="2018-01-01" max="2018-12-31">
-        <button type="submit">Eingaben absenden</button>
-    </form>
-
-    
+    </div>
 
 
-    <br>
+    <div>
 
+
+        <span th:unless="${exist_data}" >
+
+
+            <img style="float:right;" th:src="@{Tretti.gif}" width="270" height="270" />
+            <p th:text="'Die Durchschnittsdistanz beträgt ' + ${DistanzDurchschnitt} + ' km.'" />
+            <p th:text="'Der durchschnittliche Zeitaufwand ist ' + ${ZeitDurchschnitt} + ' h.'" />
+            <p th:text="'Die Durchschnittsgeschwindigkeit beträgt ' + ${GeschwindigkeitDurchschnitt} + ' km/h.'" />
+            <br>
+            <p
+                th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tretty Rollern sind ' + ${Kosten_Tretty} + ' €.'" />
+            <p
+                th:text="'Die durchschnittlichen Kosten bei einer Buchung von Lime Rollern sind ' + ${Kosten_Lime} + ' €.'" />
+            <p
+                th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tier Rollern sind ' + ${Kosten_Tier} + ' €.'" />
+            <br>
+            <p
+                th:text="'Der CO2-Ausstoß eines Autos auf einer durchschnittlich langen Strecke beträgt ' + ${CO2_Car} + ' g, der des E-Scooters '+ ${CO2_Scooter} + ' g und der für ein Tretty-Fahrrad '+${CO2_Bicycle}+' g.'" />
+            <p
+                th:text="'Auf der Fahrt mit einem Tretty-Fahrrad wird ' + ${CO2_saving_Car_Tretty} + ' Gramm CO2 im Vergleich zu einem Auto gespart.'" />
+            <p
+                th:text="'Auf der Fahrt mit einem Tretty-Fahrrad wird ' + ${CO2_saving_Scooter_Tretty} + ' Gramm CO2 im Vergleich zu einem E-Scooter gespart.'" />
+            <br>
+            <p
+                th:text="'Die kürzeste gefahrene Strecke mit einem Tretty-Fahrrads war ' + ${Distanz_min} + ' km lang und die längste Strecke '+ ${Distanz_max}+' km.'" />
+            <p
+                th:text="'Die kürzeste Fahrt mit einem Tretty-Fahrrad dauerte ' + ${Zeit_min} + ' Minuten und die längste Fahrtdauer dauerte '+ ${Zeit_max}+' Minuten.'" />
+            <p
+                th:text="'Die höchste Geschwindigkeit, die ein Nutzer mit einem Tretty-Fahrrad gefahren war, beträgt ' + ${Geschwindigkeit_max} + ' km/h und die langsamste Geschwindigkeit beträgt '+ ${Geschwindigkeit_min}+' km/h.'" />
+            <br>
+            <br>
+            
+
+        </span>
+
+        <form id="person">
+            <label for="start">Start date:</label>
+
+            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2022-12-31">
+
+            <label for="end">end date:</label>
+
+            <input type="date" id="end" name="trip-end" value="2018-07-25" min="2018-01-01" max="2022-12-31">
+            <button type="submit">Eingaben absenden</button>
+        </form>
+
+
+        <br>
+    </div>
     <br>
     <img th:src="@{MuensterSkyline.png}" />
     <img style="float:right;" th:src="@{TrettiMaimai.png}" width="120" height="133" 3 />
