@@ -15,7 +15,7 @@ public class DistanceTime {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "5b3ce3597851110001cf62483194512efdbe471e8b6d024358d4fcd7");
+        //headers.set("Authorization", "5b3ce3597851110001cf62483194512efdbe471e8b6d024358d4fcd7");
         headers.set("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8");
         headers.set("Content-Type", "application/json; charset=utf-8");
 
@@ -25,7 +25,7 @@ public class DistanceTime {
 
         BicycleRoute route =
                 restTemplate.postForObject(
-                        "https://api.openrouteservice.org/v2/matrix/cycling-regular",
+                        "http://10.65.84.76:8080/ors/v2/matrix/cycling-regular",
                         request,
                         BicycleRoute.class);
 

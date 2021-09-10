@@ -72,14 +72,14 @@ public class Dataloader {
     public static void scan(Datapoint[] dp_array, int temp) throws Exception {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
-        // String fileName = "classpath:routes_bikes.csv";
+        //String fileName = "classpath:routes_bikes.csv";
         String fileName = "classpath:routes_bikes_calculated_data.csv";
         File file = ResourceUtils.getFile(fileName);
         Scanner sc = new Scanner(file);
         sc.useDelimiter("\n"); // sets the delimiter pattern
         boolean routingInfoIncluded = true;
-        // boolean routingInfoIncluded =
-        // sc.next().contains("Routing_Time;Routing_Distance");
+        //boolean routingInfoIncluded =
+        //sc.next().contains("Routing_Time;Routing_Distance");
         if (!routingInfoIncluded) {
             overwriteCSV(fileName);
             getRoutingInfo(sc.next());
@@ -115,15 +115,19 @@ public class Dataloader {
         columnnames = columnnames.replace("\n", "").replace("\r", "");
         String columnNamesList = columnnames + ";ROUTING_TIME;ROUTING_DISTANCE";
         builder.append(columnNamesList + "\n");
+        int counter = 0;
 
         while (sc.hasNext()) // goes through all data rows
+
         {
-            Thread.sleep(5000);
+            //Thread.sleep(5000);
             String row = sc.next();
             row = row.replace("\n", "").replace("\r", "");
             double[] routingInfo = getRoutingInfo(row);
             builder.append(row + ";" + convertToHours(routingInfo[0]) + ";" + convertToKM(routingInfo[1]));
             builder.append("\n");
+            System.out.println(counter);
+            counter++;
         }
 
         pw.write(builder.toString());
@@ -149,15 +153,16 @@ public class Dataloader {
         String end_X = date.substring(Start_Y_right_index + 1, End_X_right_index);
         String end_Y = date.substring(End_X_right_index + 1, End_Y_right_index);
 
-        long start_x_long = Long.parseLong(start_x);
-        long start_y_long = Long.parseLong(start_y);
-        long end_x_long = Long.parseLong(end_X);
-        long end_y_long = Long.parseLong(end_Y);
+        double start_x_long = Double.parseDouble(start_x);
+        double start_y_long = Double.parseDouble(start_y);
+        double end_x_long = Double.parseDouble(end_X);
+        double end_y_long = Double.parseDouble(end_Y);
 
         ConvertCoords converter = new ConvertCoords();
 
         double[] latlonStart = converter.transformUTMToWGS84(start_x_long, start_y_long);
         double[] latlonEnd = converter.transformUTMToWGS84(end_x_long, end_y_long);
+
 
         DistanceTime distanceTime = new DistanceTime();
 

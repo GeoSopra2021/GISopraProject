@@ -12,7 +12,7 @@ import org.opengis.referencing.operation.TransformException;
 
 public class ConvertCoords {
 
-    public double[] transformUTMToWGS84(long easting, long northing) throws FactoryException, TransformException {
+    public double[] transformUTMToWGS84(double easting, double northing) throws FactoryException, TransformException {
 
         CRSAuthorityFactory crsFac = ReferencingFactoryFinder
                 .getCRSAuthorityFactory("EPSG", null);
