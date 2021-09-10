@@ -72,14 +72,14 @@ public class Dataloader {
     public static void scan(Datapoint[] dp_array, int temp) throws Exception {
         // parsing a CSV file into Scanner class constructor
         // add personal path in String
-        String fileName = "classpath:routes_bikes.csv";
-        //String fileName = "classpath:routes_bikes_calculated_data.csv";
+        //String fileName = "classpath:routes_bikes.csv";
+        String fileName = "classpath:routes_bikes_calculated_data.csv";
         File file = ResourceUtils.getFile(fileName);
         Scanner sc = new Scanner(file);
         sc.useDelimiter("\n"); // sets the delimiter pattern
-        //boolean routingInfoIncluded = true;
-        boolean routingInfoIncluded =
-        sc.next().contains("Routing_Time;Routing_Distance");
+        boolean routingInfoIncluded = true;
+        //boolean routingInfoIncluded =
+        //sc.next().contains("Routing_Time;Routing_Distance");
         if (!routingInfoIncluded) {
             overwriteCSV(fileName);
             getRoutingInfo(sc.next());
