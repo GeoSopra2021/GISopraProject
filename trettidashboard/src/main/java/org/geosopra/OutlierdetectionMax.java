@@ -51,7 +51,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return Math.round((dp.getRoutingDistance() / dp.getRoutingTime())*100)/100d;
+			return Math.round((dp.getRoutingDistance() / dp.getRoutingTime())*100.0)/100.0;
 		}
 		
 		@Override
