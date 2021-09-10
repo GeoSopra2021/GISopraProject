@@ -9,40 +9,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.util.ResourceUtils;
 
-/**
- * Hello world! test
- *
- */
+
+
+
 @SpringBootApplication
 public class App {
+
+    /**
+     * main fuction, runs Spring Application
+     * @param args
+     * @throws Exception
+    */
+
+
     public static void main(String[] args) throws Exception {
 
     	SpringApplication.run(App.class, args);
 
-        /*
-        Datapoint[] dp_array = new Datapoint[279];
-        int temp = 0;
-        scan(dp_array, temp);
-
-        System.out.println("test" + dp_array[5].getDistance());
-
-        Durchschnitt entfernung = new Durchschnitt.DistanzDurchschnitt();
-        double ergebnis = entfernung.analyseIntern(dp_array);
-        System.out.println("Die Durchschnittslänge ist " + ergebnis + " km");
-        
-        Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
-        ergebnis = zeit.analyseIntern(dp_array);
-        System.out.println("Die Durchschnittszeit ist " + ergebnis * 100 + " min");
-        
-        Kosten.Tretty tretty = new Kosten.Tretty();
-		System.out.println("Kosten Tretty: " + tretty.analyseIntern(dp_array));
-		
-		Kosten.Lime lime = new Kosten.Lime();
-		System.out.println("Kosten Lime: " + lime.analyseIntern(dp_array));
-		
-		Kosten.Tier tier = new Kosten.Tier();
-		System.out.println("Kosten Tier: " + tier.analyseIntern(dp_array));
-       */
 
     }
 
@@ -54,6 +37,15 @@ public class App {
     format date string in datapoint object and return this
 
     */
+    /**
+     * format String to various Variables and add these to the Datapoint Class in Datapoint_Array
+     * @param date
+     * @return row, Datapoint Object with the CSV Values
+     * @throws FactoryException
+     * @throws TransformException
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static Datapoint format(String date) throws FactoryException, TransformException, IOException, InterruptedException {
 
 
