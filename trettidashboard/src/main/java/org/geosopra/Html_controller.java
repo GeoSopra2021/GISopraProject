@@ -78,13 +78,16 @@ public class Html_controller {
      */
 
     @RequestMapping("/")
-    public String dashboard_with_filter(@RequestParam(required = true, value = "trip-start", defaultValue="2021-01-01") String start,
-            @RequestParam(required = true, value = "trip-end", defaultValue="2099-04-20") String end, Model model) {
+    public String dashboard_with_filter(@RequestParam(required = false, value = "trip-start", defaultValue="2021-01-01") String start,
+            @RequestParam(required = false, value = "trip-end", defaultValue="2099-04-20") String end, Model model) {
         System.out.println("start");
         System.out.println(start);
         System.out.println("end");
         System.out.println(end);
 
+        model.addAttribute("start_time", start);
+        model.addAttribute("end_time", end);
+        
 
         System.out.println("rohdaten.length");
         System.out.println(rohdaten_array.length);

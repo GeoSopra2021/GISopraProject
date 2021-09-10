@@ -10,6 +10,16 @@
 
 <body>
 
+    <form id="person">
+        <label for="start">Start date:</label>
+
+        <input type="date" id="start" name="trip-start" th:value="${start_time}" min="2018-01-01" max="2022-12-31">
+
+        <label for="end">end date:</label>
+
+        <input type="date" id="end" name="trip-end" th:value="${end_time}" min="2018-01-01" max="2022-12-31">
+        <button type="submit">Eingaben absenden</button>
+    </form>
 
     <div>
         <h2 th:if="${exist_data}">Keine Daten für den ausgewählten Zeitraum vorhanden!</h2>
@@ -54,16 +64,6 @@
 
         </span>
 
-        <form id="person">
-            <label for="start">Start date:</label>
-
-            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2022-12-31">
-
-            <label for="end">end date:</label>
-
-            <input type="date" id="end" name="trip-end" value="2018-07-25" min="2018-01-01" max="2022-12-31">
-            <button type="submit">Eingaben absenden</button>
-        </form>
 
 
         <br>
