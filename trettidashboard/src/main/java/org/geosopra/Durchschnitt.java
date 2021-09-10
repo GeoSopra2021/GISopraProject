@@ -60,8 +60,32 @@ public abstract class Durchschnitt implements AnalystIn {
 		 * @return Durchschnittsgeschwindigkeit in km/h
 		 */
 		public double getValue(Datapoint dp) {
+
+			System.out.println("Durchschnittsgeschwindigkeit: "+ dp.getRoutingDistance() / dp.getRoutingTime());
 			return dp.getRoutingDistance() / dp.getRoutingTime();
+
 		}
+
+		/**
+		 * If-Abfrage zum Abfangen von NaN Werten der Routing Time
+		 */
+		
+		@Override
+		public void analyse(Datapoint[] dp, Model model) {
+			double ergebnis = 0;
+			for(int i = 0; i < dp.length; i++) {
+				if (dp[i].getRoutingTime() >0) {
+					ergebnis += getValue(dp[i]);
+				}
+			}
+
+
+			ergebnis /= dp.length;
+			ergebnis = Math.round(ergebnis * 100.0)/100.0;
+			model.addAttribute(getKey(), ergebnis);
+		}
+
+
 		@Override
 		public String getKey() {
 			return "GeschwindigkeitDurchschnitt";
