@@ -13,6 +13,7 @@ public abstract class OutlierdetectionMax implements AnalystIn {
 				ergebnis = getValue(dp[i]);
 			}
 		}
+		ergebnis = Math.round(ergebnis * 100)/100d;
 		model.addAttribute(getKey(), ergebnis);
 	}
 
