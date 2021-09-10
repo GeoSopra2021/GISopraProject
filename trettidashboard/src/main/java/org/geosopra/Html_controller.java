@@ -8,10 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.*;
+
 @Controller
 public class Html_controller {
 
+
     Datapoint[] rohdaten_array = new Datapoint[4273];
+
+
+    int csvRowNumber = getCSVRowNumber();
+    Datapoint[] rohdaten_array = new Datapoint[csvRowNumber-1];
+
+
 
     AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
     Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
@@ -28,6 +37,14 @@ public class Html_controller {
     AnalystIn outlier_detection_time_max = new OutlierdetectionMax.Outlierdetection_zeit_max();
     AnalystIn outlier_detection_Geschwindigkeit_max = new OutlierdetectionMax.Outlierdetection_Geschwindigkeit_max();
 
+    public Html_controller() throws IOException {
+    }
+
+    public int getCSVRowNumber() throws IOException {
+        Dataloader dataloader = new Dataloader();
+        return dataloader.countCSVRows();
+    }
+
     @PostConstruct
     public void init() {
 
@@ -40,6 +57,8 @@ public class Html_controller {
         }
 
     }
+
+
 
     
 
@@ -60,15 +79,37 @@ public class Html_controller {
      */
 
     @RequestMapping("/")
-    public String dashboard_with_filter(@RequestParam(required = false, value = "trip-start", defaultValue="2021-04-01") String start,
-            @RequestParam(required = false, value = "trip-end", defaultValue="2099-04-20") String end, Model model) {
+    public String dashboard_with_filter(@RequestParam(required = true, value = "trip-start", defaultValue="2021-01-01") String start,
+            @RequestParam(required = true, value = "trip-end", defaultValue="2099-04-20") String end, Model model) {
         System.out.println("start");
         System.out.println(start);
         System.out.println("end");
         System.out.println(end);
 
+
+        System.out.println("rohdaten.length");
+        System.out.println(rohdaten_array.length);
+
+        System.out.println(rohdaten_array[rohdaten_array.length-2].getDistance());
+        for (int i = 0; i < rohdaten_array.length; i++) {
+
+            if (rohdaten_array[i] == null) {
+                System.out.println(i);
+            }
+          
+        }
+
         ZeitFilter filtern = new ZeitFilter();
         Datapoint[] gefiltertes_array = filtern.datumabfrage(rohdaten_array, start, end);
+
+       
+
+       
+
+        if (gefiltertes_array.length == 0) {
+            model.addAttribute("exist_data", true);
+            return "dashboard";
+        } 
 
         entfernung.analyse(gefiltertes_array, model);
         zeit.analyse(gefiltertes_array, model);
@@ -87,6 +128,8 @@ public class Html_controller {
         outlier_detection_distance_max.analyse(gefiltertes_array,  model);
         outlier_detection_time_max.analyse(gefiltertes_array,  model);
         outlier_detection_Geschwindigkeit_max.analyse(gefiltertes_array, model);
+
+
 
         model.addAllAttributes(model.asMap());
 
