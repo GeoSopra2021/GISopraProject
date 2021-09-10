@@ -13,7 +13,7 @@ public abstract class Durchschnitt implements AnalystIn {
 			}
 		
 		ergebnis /= dp.length;
-		ergebnis = Math.round(ergebnis * 100.0)/100.0;
+		ergebnis = Math.round(ergebnis * 1000.0)/1000.0d;
 		model.addAttribute(getKey(), ergebnis);
 	}
 	
@@ -44,7 +44,9 @@ public abstract class Durchschnitt implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
+			System.out.println("Durchschnittszeit " + dp.getRoutingTime());
 			return dp.getRoutingTime();
+
 		}
 		@Override
 		public String getKey() {
