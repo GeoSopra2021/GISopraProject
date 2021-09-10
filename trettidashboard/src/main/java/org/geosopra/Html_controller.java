@@ -13,8 +13,7 @@ import java.io.*;
 @Controller
 public class Html_controller {
 
-
-    Datapoint[] rohdaten_array = new Datapoint[4273];
+    
 
 
     int csvRowNumber = getCSVRowNumber();
