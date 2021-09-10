@@ -1,9 +1,11 @@
 package org.geosopra;
 
 import javax.xml.crypto.Data;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
 public class ZeitFilter {
 
@@ -23,26 +25,27 @@ public class ZeitFilter {
         return gefiltertesArray;
     }
     
-    public long umrechnen(int year, int month, int day) {
-    	Date datum = new Date(year, month, day);
-    	
-    	long unixTime = datum.getTime();
-    	return unixTime;
-    }
-    
     public Datapoint[] datumabfrage(Datapoint[] dp, String begin, String end) {
     	
-    	int yearBegin = Integer.parseInt(begin.substring(0, 3));
-    	int monthBegin = Integer.parseInt(begin.substring(5, 6));
-    	int dayBegin = Integer.parseInt(begin.substring(8, 9));
+    	int yearBegin = Integer.parseInt(begin.substring(0, 4));
+    	int monthBegin = Integer.parseInt(begin.substring(5, 7));
+    	int dayBegin = Integer.parseInt(begin.substring(8, 10));
     	
-    	int yearEnd = Integer.parseInt(end.substring(0, 3));
-    	int monthEnd = Integer.parseInt(end.substring(5, 6));
-    	int dayEnd = Integer.parseInt(end.substring(8, 9));
+    	int yearEnd = Integer.parseInt(end.substring(0, 4));
+    	int monthEnd = Integer.parseInt(end.substring(5, 7));
+    	int dayEnd = Integer.parseInt(end.substring(8, 10));
     	
-    	long unixBegin = umrechnen(yearBegin, monthBegin, dayBegin);
-    	long unixEnd = umrechnen(yearEnd, monthEnd, dayEnd);
+    	long unixBegin = LocalDate.of(yearBegin, monthBegin, dayBegin)
+						          .atTime(0, 0, 0)
+						          .atZone(ZoneId.of("Europe/Berlin"))
+						          .toEpochSecond();
+    	long unixEnd = LocalDate.of(yearEnd, monthEnd, dayEnd)
+						        .atTime(23, 59, 59)
+						        .atZone(ZoneId.of("Europe/Berlin"))
+						        .toEpochSecond();
     	
+    	System.out.println("Begin: " + unixBegin);
+    	System.out.println("End: " + unixEnd);
     	return filter(dp, unixBegin, unixEnd);
     	
     }
