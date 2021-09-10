@@ -32,12 +32,22 @@
 
         <span th:unless="${exist_data}" >
 
-
+            <h3>Statistiken</h3>
             <img style="float:right;" th:src="@{Tretti.gif}" width="270" height="270" />
             <p th:text="'Die Durchschnittsdistanz beträgt ' + ${DistanzDurchschnitt} + ' km.'" />
             <p th:text="'Der durchschnittliche Zeitaufwand ist ' + ${ZeitDurchschnitt} + ' h.'" />
             <p th:text="'Die Durchschnittsgeschwindigkeit beträgt ' + ${GeschwindigkeitDurchschnitt} + ' km/h.'" />
+            <p
+            th:text="'Die kürzeste gefahrene Strecke mit einem Tretty-Fahrrads war ' + ${Distanz_min} + ' km lang und die längste Strecke '+ ${Distanz_max}+' km.'" />
+        <p
+            th:text="'Die kürzeste Leihdauer mit einem Tretty-Fahrrad dauerte ' + ${Zeit_min} + ' Stunden und die längste Leihdauer dauerte '+ ${Zeit_max}+' Stunden.'" />
+        <p
+            th:text="'Die höchste Geschwindigkeit, die ein Nutzer mit einem Tretty-Fahrrad gefahren war, beträgt ' + ${Geschwindigkeit_max} + ' km/h und die langsamste Geschwindigkeit beträgt '+ ${Geschwindigkeit_min}+' km/h.'" />
+     
+            
             <br>
+
+<h3>Kosten</h3>
             <p
                 th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tretty Rollern sind ' + ${Kosten_Tretty} + ' €.'" />
             <p
@@ -45,6 +55,9 @@
             <p
                 th:text="'Die durchschnittlichen Kosten bei einer Buchung von Tier Rollern sind ' + ${Kosten_Tier} + ' €.'" />
             <br>
+            <img style="float:right;" th:src="@{TrettiMaimai.png}" width="120" height="133" 3 />
+          
+          <h3>CO2 Emissionen</h3>
             <p
                 th:text="'Der CO2-Ausstoß eines Autos auf einer durchschnittlich langen Strecke beträgt ' + ${CO2_Car} + ' g, der des E-Scooters '+ ${CO2_Scooter} + ' g und der für ein Tretty-Fahrrad '+${CO2_Bicycle}+' g.'" />
             <p
@@ -52,28 +65,20 @@
             <p
                 th:text="'Auf der Fahrt mit einem Tretty-Fahrrad wird ' + ${CO2_saving_Scooter_Tretty} + ' Gramm CO2 im Vergleich zu einem E-Scooter gespart.'" />
             <br>
-            <p
-                th:text="'Die kürzeste gefahrene Strecke mit einem Tretty-Fahrrads war ' + ${Distanz_min} + ' km lang und die längste Strecke '+ ${Distanz_max}+' km.'" />
-            <p
-                th:text="'Die kürzeste Leihdauer mit einem Tretty-Fahrrad dauerte ' + ${Zeit_min} + ' Stunden und die längste Leihdauer dauerte '+ ${Zeit_max}+' Stunden.'" />
-            <p
-                th:text="'Die höchste Geschwindigkeit, die ein Nutzer mit einem Tretty-Fahrrad gefahren war, beträgt ' + ${Geschwindigkeit_max} + ' km/h und die langsamste Geschwindigkeit beträgt '+ ${Geschwindigkeit_min}+' km/h.'" />
-            <br>
-            <br>
-            
+
+
 
         </span>
 
 
 
-        <br>
     </div>
-    <br>
+   
     <img th:src="@{MuensterSkyline.png}" />
-    <img style="float:right;" th:src="@{TrettiMaimai.png}" width="120" height="133" 3 />
-    <br>
+    
 
-    <br>
+
+   
 
 
 
