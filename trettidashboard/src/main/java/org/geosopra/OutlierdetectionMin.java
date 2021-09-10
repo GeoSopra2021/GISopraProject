@@ -38,7 +38,7 @@ public abstract class OutlierdetectionMin implements AnalystIn {
 
 		@Override
 		public double getValue(Datapoint dp) {
-			return dp.getRoutingTime();
+			return dp.getTime();
 		}
 		
 		@Override
