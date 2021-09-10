@@ -25,7 +25,7 @@ public class DistanceTime {
 
         BicycleRoute route =
                 restTemplate.postForObject(
-                        "http://10.65.84.76:8080/ors/v2/matrix/cycling-regular",
+                        "http://10.67.116.55:8080/ors/v2/matrix/cycling-regular",
                         request,
                         BicycleRoute.class);
 

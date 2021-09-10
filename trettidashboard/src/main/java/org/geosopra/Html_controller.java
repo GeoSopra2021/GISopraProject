@@ -103,9 +103,6 @@ public class Html_controller {
 
         ZeitFilter filtern = new ZeitFilter();
         Datapoint[] gefiltertes_array = filtern.datumabfrage(rohdaten_array, start, end);
-
-       
-
        
 
         if (gefiltertes_array.length == 0) {

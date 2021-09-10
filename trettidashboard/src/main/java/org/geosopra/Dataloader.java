@@ -110,15 +110,12 @@ public class Dataloader {
         File file = ResourceUtils.getFile(fileName);
         Scanner sc = new Scanner(file);
         sc.useDelimiter("\n"); // sets the delimiter pattern
-        boolean routingInfoIncluded = true;
-        //boolean routingInfoIncluded =
-        //sc.next().contains("Routing_Time;Routing_Distance");
+        boolean routingInfoIncluded = sc.next().contains("ROUTING_TIME;ROUTING_DISTANCE");
         if (!routingInfoIncluded) {
+            String fileName = "classpath:routes_bikes.csv";
             overwriteCSV(fileName);
-            getRoutingInfo(sc.next());
         } else {
-            sc.next();
-            System.out.println("routing info exists already");
+            System.out.println("Routing info already included");
             while (sc.hasNext()) // returns a boolean value test
             {
                 dp_array[temp] = format(sc.next());
