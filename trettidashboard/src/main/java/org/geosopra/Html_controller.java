@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Html_controller {
 
-    Datapoint[] rohdaten_array = new Datapoint[4274];
+    Datapoint[] rohdaten_array = new Datapoint[4273];
 
     AnalystIn entfernung = new Durchschnitt.DistanzDurchschnitt();
     Durchschnitt zeit = new Durchschnitt.ZeitDurchschnitt();
